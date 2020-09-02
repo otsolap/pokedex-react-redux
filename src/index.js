@@ -7,13 +7,14 @@ import {
   applyMiddleware,
   compose,
 } from 'redux';
+import { composeWithDevTools} from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
 
 const store = createStore (
   compose(
-    applyMiddleware,
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    applyMiddleware(thunk),
+    composeWithDevTools()
   )
 )
 

@@ -1,28 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Card from './Card'
 import Pagination from '../Layout/Pagination'
+import { connect } from 'react-redux';
+import { getPokemon } from '../../actions/actionCreators'
 
-class ListPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: null
-        };
-    }
-    componentDidMount() {
-        fetch('https://pokeapi.co/api/v2/pokemon/?limit=29')
-            .then(resp => resp.json())
-            .then(data => this.setState({ data }))
-            .catch(err => console.log(err))
-    }
-
+class ListPage extends Component {
     render() {
+        const { pokedex} = this.props;
         return (
             <div>
                 <div className="row">
                     {
-                        this.state.data ?
-                        this.state.data.results.map((pokemon, index) => <Card pokemon={pokemon} key={index} />) :
+                        pokedex ?
+                        pokedex.results.map((pokemon, index) => <Card pokemon={pokemon} key={index} />) :
                         'Loading...'
                     }
                 </div>
@@ -34,4 +24,11 @@ class ListPage extends React.Component {
     }
 }
 
-export default ListPage;
+function MapStatetoProps(state) {
+    return {
+        pokedex: state.pokedex
+    }
+}
+
+
+export default connect(MapStatetoProps, { getPokemon}) (ListPage);
