@@ -1,19 +1,19 @@
-import { getPokemon } from '../actions/actionCreators';
+import { GET_ALL } from '../actions/actionCreators';
 
 const initialState = {
-pokedex: [],
-previousPage: null,
-nextPage: null,
-numberOfPage: 0
+    pokemons: [],
+    previousPage: null,
+    nextPage: null,
+    numberOfPage: 0
 };
 
-function getReducer(state = initialState, action) {
+const getReducer = (state = initialState, action) => {
     switch (action.type) {
-        case getPokemon:
-            return {...state, pokedex: action.data.results};
-            default:
-                return state;
-        }
+        case GET_ALL:
+            return { ...state, pokemons: action.data.results };
+        default:
+            return state;
+    }
 }
 
 export default getReducer;
