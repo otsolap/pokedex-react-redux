@@ -5,16 +5,23 @@ import { connect } from 'react-redux';
 import { getPokemon } from '../../actions/actionCreators'
 
 class ListPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+           data: null
+        };
+    }    
+    
+    componentDidMount() {
+        this.props.getPokemon();
+    }
+
+
     render() {
-        const { pokedex} = this.props;
         return (
             <div>
                 <div className="row">
-                    {
-                        pokedex ?
-                        pokedex.results.map((pokemon, index) => <Card pokemon={pokemon} key={index} />) :
-                        'Loading...'
-                    }
+                        {this.props.pokedex.map((pokemon, index) => <Card pokemon={pokemon} key={index} />)}
                 </div>
                 <div className="row">
                     <Pagination></Pagination>
@@ -24,11 +31,18 @@ class ListPage extends Component {
     }
 }
 
-function MapStatetoProps(state) {
+function mapStatetoProps(state) {
     return {
         pokedex: state.pokedex
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getPokemon: () => {
+            getPokemon(dispatch);
+        }
+    }
+}
 
-export default connect(MapStatetoProps, { getPokemon}) (ListPage);
+export default connect(mapStatetoProps, mapDispatchToProps) (ListPage);
