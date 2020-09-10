@@ -1,4 +1,4 @@
-import { GET_ALL } from '../actions/actionCreators';
+import { INIT_API } from '../actions/actionCreators';
 
 const initialState = {
     pokemons: [],
@@ -9,7 +9,7 @@ const initialState = {
 
 const getReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_ALL:
+        case INIT_API:
             return { ...state, pokemons: action.data.results };
         default:
             return state;

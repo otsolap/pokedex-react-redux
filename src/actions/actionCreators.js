@@ -1,12 +1,12 @@
-export const GET_ALL = 'GET_ALL';
+export const INIT_API = 'INIT_API';
 
-export const getPokemon = dispatch => {
+export const initPokemon = dispatch => {
     fetch('https://pokeapi.co/api/v2/pokemon/')
         .then(resp => resp.json())
         // data tulee actionTypestä.
         .then(data => {
             dispatch({
-                type: GET_ALL,
+                type: INIT_API,
                 data: data
             })
         })

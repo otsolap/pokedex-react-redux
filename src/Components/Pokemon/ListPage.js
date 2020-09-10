@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import Card from './Card'
 import Pagination from '../Layout/Pagination'
 import { connect } from 'react-redux';
-import { getPokemon } from '../../actions/actionCreators';
+import { initPokemon } from '../../actions/actionCreators';
 
 class ListPage extends Component {
     componentDidMount() {
-        this.props.getPokemon();
+        this.props.initPokemon();
     }
 
     render() {
@@ -31,8 +31,8 @@ function mapStatetoProps(state) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getPokemon: () => {
-            getPokemon(dispatch);
+        initPokemon: () => {
+            initPokemon(dispatch);
         }
     }
 }
