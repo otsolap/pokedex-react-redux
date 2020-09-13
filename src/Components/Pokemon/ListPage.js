@@ -29,7 +29,7 @@ function mapStatetoProps(state) {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
         initPokemon: () => {
             initPokemon(dispatch);
