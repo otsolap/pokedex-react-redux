@@ -10,6 +10,7 @@ class ListPage extends Component {
     }
 
     render() {
+        console.log(this.props.pokemons);
         return (
             <div>
                 <div className="row">
@@ -23,7 +24,7 @@ class ListPage extends Component {
     }
 }
 
-function mapStatetoProps(state) {
+const mapStateToProps = state => {
     return {
         pokemons: state.pokemons
     }
@@ -32,9 +33,9 @@ function mapStatetoProps(state) {
 const mapDispatchToProps = dispatch => {
     return {
         initPokemon: () => {
-            initPokemon(dispatch);
+            initPokemon(dispatch)
         }
     }
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(ListPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ListPage);

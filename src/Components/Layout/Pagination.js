@@ -17,7 +17,7 @@ class Pagination extends React.Component {
             <div className="container">
                 <ul className="pagination">
                     <li className="disabled"><a href="#!"><i className="material-icons">chevron_left</i></a></li>
-                    {/* {pageLinks} */}
+                    {pageLinks}
                     <li className="waves-effect"><a href="#!"><i className="material-icons">chevron_right</i></a></li>
                 </ul>
             </div>
